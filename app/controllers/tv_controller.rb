@@ -3,7 +3,7 @@ require 'net/http'
 
 class TvController < ApplicationController
 	protect_from_forgery with: :null_session
-	
+
 	def power
 		system("irsend SEND_ONCE tv KEY_POWER")
 		render plain: "Success"
@@ -37,7 +37,7 @@ class TvController < ApplicationController
 		elsif request.put?
 			next_state = JSON.parse(request.body.read)['state']
 
-			url = URI("http://192.168.1.165/api/#{ENV['HUE_TOKEN']}/lights/3/state")
+			url = URI("http://192.168.1.165/api/#{ENV['HUE_TOKEN']}/lights/1/state")
 
 			http = Net::HTTP.new(url.host, url.port)
 
